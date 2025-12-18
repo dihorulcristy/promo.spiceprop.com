@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
                 allow: '/',
             },
         ],
-        sitemap: 'https://sice-prop.vercel.app/sitemap.xml',
+        sitemap: 'https://promo.spiceprop.com/sitemap.xml',
     }
 }

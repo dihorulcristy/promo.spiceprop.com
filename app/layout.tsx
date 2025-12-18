@@ -9,34 +9,33 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  // Primary SEO - Targeting "free prop firm trial" keywords
-  title: "Free Prop Firm Trial | €6K Funded Account Demo - SpiceProp",
-  description: "Get your FREE prop firm trial today! Practice prop trading with a €6K demo account. Best FTMO free trial alternative. No deposit required. Start your funded account free practice now.",
+  // Primary SEO - Core Keywords Focus
+  title: "Free Prop Firm Trial | €6K Demo Account - SpiceProp",
+  description: "Get your FREE prop firm trial today! Test SpiceProp for free with a €6K prop trading demo account. Start your funded account free practice now - no deposit required.",
 
-  // Keywords targeting
+  // Keywords targeting - Core focus
   keywords: [
     "free prop firm trial",
     "prop trading demo account free",
     "test spiceprop for free",
     "funded account free practice",
-    "FTMO free trial alternative",
-    "fundednext demo account",
     "free funded account",
     "prop firm demo",
     "free trading challenge",
-    "prop trading practice account"
+    "prop trading practice account",
+    "spiceprop free trial"
   ],
 
   // Canonical URL
   alternates: {
-    canonical: "https://sice-prop.vercel.app",
+    canonical: "https://promo.spiceprop.com",
   },
 
   // Open Graph for social sharing
   openGraph: {
     title: "Free Prop Firm Trial | €6K Demo Account - SpiceProp",
-    description: "Get your FREE prop trading demo account. Best FTMO & FundedNext alternative. €6K funded account practice with no deposit. Start trading risk-free today!",
-    url: "https://sice-prop.vercel.app",
+    description: "Get your FREE prop trading demo account. Test SpiceProp for free with €6K funded account practice. No deposit required!",
+    url: "https://promo.spiceprop.com",
     siteName: "SpiceProp",
     locale: "en_US",
     type: "website",
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Free Prop Firm Trial | €6K Demo - SpiceProp",
-    description: "FREE prop trading demo account. Best FTMO alternative. €6K funded account practice - no deposit required!",
+    description: "FREE prop trading demo account. Test SpiceProp for free. €6K funded account practice - no deposit required!",
     images: ["/images/og-image.png"],
   },
 

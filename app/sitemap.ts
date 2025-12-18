@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://sice-prop.vercel.app'
+    const baseUrl = 'https://promo.spiceprop.com'
 
     return [
         {

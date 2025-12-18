@@ -95,7 +95,7 @@ export default function Home() {
                 <span className="inline-flex items-center gap-1 px-4 py-1.5 rounded-lg font-mono font-bold text-lg shadow-lg" style={{ backgroundColor: '#0F172A', color: '#ffffff' }}>
                   SPICEFREE
                 </span>{" "}
-                for <strong>funded account free practice</strong>. Best FTMO & FundedNext alternative.
+                to <strong>test SpiceProp for free</strong>. Start your <strong>funded account free practice</strong> today!
               </motion.p>
 
               {/* CTA Buttons */}
@@ -227,15 +227,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* COMPARISON TABLE - SEO: FTMO Free Trial Alternative */}
+        {/* COMPARISON TABLE - SEO: Free Prop Firm Trial */}
         <section id="comparison" className="py-24 bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center mb-16">
-              <span className="inline-block text-spice-red font-semibold text-sm uppercase tracking-wider mb-4">FTMO Free Trial Alternative</span>
+              <span className="inline-block text-spice-red font-semibold text-sm uppercase tracking-wider mb-4">Free Prop Firm Trial</span>
               <h2 className="text-4xl md:text-5xl font-extrabold text-spice-dark mb-6">
-                Best <span className="gradient-text">FundedNext Demo Account</span> Alternative
+                Why <span className="gradient-text">Test SpiceProp for Free</span>?
               </h2>
-              <p className="text-xl text-spice-muted">Compare our FREE €6K prop trading demo. No deposit required - test SpiceProp for free!</p>
+              <p className="text-xl text-spice-muted">Compare our FREE €6K prop trading demo account. No deposit required - start your funded account free practice!</p>
             </motion.div>
 
             <motion.div {...fadeInUp} className="overflow-hidden bg-white shadow-2xl shadow-gray-200/50 rounded-3xl border border-gray-100">
