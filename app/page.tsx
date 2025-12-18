@@ -59,14 +59,14 @@ export default function Home() {
                 <span className="text-spice-dark font-bold text-sm">100% OFF 2-Step with code SPICEFREE</span>
               </motion.div>
 
-              {/* Main Headline */}
+              {/* Main Headline - SEO Optimized */}
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1]"
               >
-                <span className="text-spice-dark">Claim Your </span>
+                <span className="text-spice-dark">Free Prop Firm Trial </span>
                 <span className="relative inline-block">
                   <span className="gradient-text">€6,000</span>
                   <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none">
@@ -80,22 +80,22 @@ export default function Home() {
                   </svg>
                 </span>
                 <br />
-                <span className="text-spice-dark">2-Step Challenge – </span>
-                <span className="text-green-500">FREE</span>
+                <span className="text-spice-dark">Demo Account – </span>
+                <span className="text-green-500">100% FREE</span>
               </motion.h1>
 
-              {/* Subheadline */}
+              {/* Subheadline - SEO Optimized */}
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-xl md:text-2xl text-spice-muted mb-10 max-w-3xl mx-auto leading-relaxed"
               >
-                Use code{" "}
+                Get your <strong>prop trading demo account free</strong>. Use code{" "}
                 <span className="inline-flex items-center gap-1 px-4 py-1.5 rounded-lg font-mono font-bold text-lg shadow-lg" style={{ backgroundColor: '#0F172A', color: '#ffffff' }}>
                   SPICEFREE
                 </span>{" "}
-                at checkout. Test your strategy on a real prop firm dashboard without any financial risk.
+                for <strong>funded account free practice</strong>. Best FTMO & FundedNext alternative.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -227,15 +227,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* COMPARISON TABLE */}
+        {/* COMPARISON TABLE - SEO: FTMO Free Trial Alternative */}
         <section id="comparison" className="py-24 bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center mb-16">
-              <span className="inline-block text-spice-red font-semibold text-sm uppercase tracking-wider mb-4">Compare</span>
+              <span className="inline-block text-spice-red font-semibold text-sm uppercase tracking-wider mb-4">FTMO Free Trial Alternative</span>
               <h2 className="text-4xl md:text-5xl font-extrabold text-spice-dark mb-6">
-                Why Traders Are <span className="gradient-text">Switching</span>
+                Best <span className="gradient-text">FundedNext Demo Account</span> Alternative
               </h2>
-              <p className="text-xl text-spice-muted">See how our FREE €6K Demo Challenge stacks up.</p>
+              <p className="text-xl text-spice-muted">Compare our FREE €6K prop trading demo. No deposit required - test SpiceProp for free!</p>
             </motion.div>
 
             <motion.div {...fadeInUp} className="overflow-hidden bg-white shadow-2xl shadow-gray-200/50 rounded-3xl border border-gray-100">
