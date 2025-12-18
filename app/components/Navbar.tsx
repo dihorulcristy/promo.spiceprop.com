@@ -60,7 +60,7 @@ export default function Navbar() {
                         </a>
                         <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden text-white px-7 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group flex items-center" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
                             <span className="relative z-10 flex items-center gap-2">
-                                Get $5K FREE
+                                Get €6K FREE
                                 <span className="inline-block w-2 h-2 bg-white rounded-full animate-pulse"></span>
                             </span>
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'linear-gradient(135deg, #F59E0B 0%, #E21D1D 100%)' }}></div>
@@ -86,7 +86,7 @@ export default function Navbar() {
                             <Link href="#testimonials" className="text-spice-dark font-medium py-2">Reviews</Link>
                             <hr className="border-gray-100" />
                             <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="w-full text-white py-3 rounded-full font-bold text-center block" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
-                                Get $5K FREE
+                                Get €6K FREE
                             </a>
                         </div>
                     </div>
