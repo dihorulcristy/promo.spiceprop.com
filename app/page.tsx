@@ -396,7 +396,7 @@ export default function Home() {
                 <span className="gradient-text">Real Capital</span>
               </h2>
               <p className="text-xl text-spice-muted mb-10 max-w-2xl mx-auto">
-                Start your FREE $5K Challenge today. No credit card. No risk. Just pure trading.
+                Start your FREE €6K Challenge today. No credit card. No risk. Just pure trading.
               </p>
 
               {/* Discount Code */}
@@ -411,7 +411,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="group relative w-full sm:w-auto px-12 py-6 text-white rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Claim Your FREE $5K Challenge
+                    Claim Your FREE €6K Challenge
                     <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'linear-gradient(135deg, #F59E0B 0%, #E21D1D 100%)' }}></div>

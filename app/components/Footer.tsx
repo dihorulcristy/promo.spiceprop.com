@@ -37,7 +37,7 @@ export default function Footer() {
                             />
                         </div>
                         <p className="text-spice-muted text-sm leading-relaxed mb-6 max-w-sm">
-                            Experience institutional-grade trading conditions with our free $5K demo challenge. Join thousands of traders mastering the markets with SpiceProp.
+                            Experience institutional-grade trading conditions with our free €6K demo challenge. Join thousands of traders mastering the markets with SpiceProp.
                         </p>
                         <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2 px-4 py-2 bg-green-50 rounded-full">
@@ -53,7 +53,7 @@ export default function Footer() {
                         <ul className="space-y-3 text-sm">
                             <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Trading Rules</Link></li>
                             <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Challenges</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Free $5K Trial</Link></li>
+                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Free €6K Trial</Link></li>
                             <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Payouts</Link></li>
                         </ul>
                     </div>
@@ -103,7 +103,7 @@ export default function Footer() {
                 {/* Disclaimer */}
                 <div className="mt-8 pt-6 border-t border-gray-100">
                     <p className="text-xs text-spice-muted/70 text-center leading-relaxed max-w-4xl mx-auto">
-                        <strong className="text-spice-muted">Disclaimer:</strong> This account is for educational and demo purposes only. No real funds or payouts are associated with this specific $5k practice challenge. Trading involves significant risk, and you should only trade with capital you can afford to lose. Past performance is not indicative of future results.
+                        <strong className="text-spice-muted">Disclaimer:</strong> This account is for educational and demo purposes only. No real funds or payouts are associated with this specific €6K practice challenge. Trading involves significant risk, and you should only trade with capital you can afford to lose. Past performance is not indicative of future results.
                     </p>
                 </div>
             </div>
