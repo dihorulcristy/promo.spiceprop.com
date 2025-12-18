@@ -230,7 +230,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-extrabold text-spice-dark mb-6">
                 Why Traders Are <span className="gradient-text">Switching</span>
               </h2>
-              <p className="text-xl text-spice-muted">See how our FREE $5K Demo Challenge stacks up.</p>
+              <p className="text-xl text-spice-muted">See how our FREE €6K Demo Challenge stacks up.</p>
             </motion.div>
 
             <motion.div {...fadeInUp} className="overflow-hidden bg-white shadow-2xl shadow-gray-200/50 rounded-3xl border border-gray-100">
@@ -242,7 +242,7 @@ export default function Home() {
                       <th className="p-6 bg-gradient-to-b from-spice-light to-orange-50 border-t-4 border-t-spice-red w-1/4 text-center">
                         <div className="flex flex-col items-center">
                           <span className="text-xl font-bold text-spice-dark">SpiceProp</span>
-                          <span className="text-xs text-white bg-spice-red px-3 py-1 rounded-full mt-2 font-bold uppercase tracking-wide">$5K FREE</span>
+                          <span className="text-xs text-white bg-spice-red px-3 py-1 rounded-full mt-2 font-bold uppercase tracking-wide">€6K FREE</span>
                         </div>
                       </th>
                       <th className="p-6 w-1/4 text-center font-bold text-gray-400">FTMO</th>
@@ -253,9 +253,9 @@ export default function Home() {
                     {[
                       { label: "Entry Cost", spice: "$0 (Free)", comp1: "$155+", comp2: "$129+" },
                       { label: "Time Limit", spice: "Unlimited", comp1: "30 Days", comp2: "Unlimited" },
-                      { label: "Profit Target", spice: "5%", comp1: "10%", comp2: "8%" },
-                      { label: "Platforms", spice: "MT4, MT5, cTrader", comp1: "MT4, MT5", comp2: "MT4, MT5" },
-                      { label: "Spreads", spice: "Raw (0.0)", comp1: "Standard", comp2: "Standard" },
+                      { label: "Profit Target", spice: "7.5%", comp1: "10%", comp2: "8%" },
+                      { label: "Platforms", spice: "MT5", comp1: "MT4, MT5", comp2: "MT4, MT5" },
+                      { label: "Spreads", spice: "Low Spreads", comp1: "Standard", comp2: "Standard" },
                     ].map((row, i) => (
                       <tr key={i} className="hover:bg-gray-50/50 transition-colors">
                         <td className="p-6 font-semibold text-spice-dark">{row.label}</td>
