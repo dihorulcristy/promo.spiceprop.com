@@ -51,30 +51,30 @@ export default function Footer() {
                     <div>
                         <h4 className="font-bold text-spice-dark mb-5 text-sm uppercase tracking-wider">Platform</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Trading Rules</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Challenges</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Free €6K Trial</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Payouts</Link></li>
+                            <li><a href="https://spiceprop.com/comparsion-of-programmes" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Trading Rules</a></li>
+                            <li><a href="https://spiceprop.com/jalapeno" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Challenges</a></li>
+                            <li><a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Free €6K Trial</a></li>
+                            <li><a href="https://spiceprop.com/payouts" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Payouts</a></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold text-spice-dark mb-5 text-sm uppercase tracking-wider">Support</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Help Center</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Contact Us</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">FAQ</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Discord</Link></li>
+                            <li><a href="https://spiceprop.com/qa" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Help Center</a></li>
+                            <li><a href="https://spiceprop.com/about" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Contact Us</a></li>
+                            <li><a href="https://spiceprop.com/qa" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">FAQ</a></li>
+                            <li><a href="https://spiceprop.com/blog" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Blog</a></li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold text-spice-dark mb-5 text-sm uppercase tracking-wider">Legal</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Privacy Policy</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Terms of Service</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Risk Disclosure</Link></li>
-                            <li><Link href="#" className="text-spice-muted hover:text-spice-red transition-colors">Refund Policy</Link></li>
+                            <li><a href="https://spiceprop.com/about" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Privacy Policy</a></li>
+                            <li><a href="https://spiceprop.com/about" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Terms of Service</a></li>
+                            <li><a href="https://spiceprop.com/about" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Risk Disclosure</a></li>
+                            <li><a href="https://spiceprop.com/about" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Refund Policy</a></li>
                         </ul>
                     </div>
                 </div>
