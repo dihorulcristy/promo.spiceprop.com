@@ -11,7 +11,7 @@ export default function Home() {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.6, ease: "easeOut" as const }
   };
 
   const staggerChildren = {
@@ -56,7 +56,7 @@ export default function Home() {
                   <span className="text-green-600 font-semibold text-sm">Limited Time</span>
                 </span>
                 <span className="w-px h-4 bg-gray-200"></span>
-                <span className="text-spice-dark font-bold text-sm">100% OFF with code SPICEFREE</span>
+                <span className="text-spice-dark font-bold text-sm">100% OFF 2-Step with code SPICEFREE</span>
               </motion.div>
 
               {/* Main Headline */}
@@ -68,7 +68,7 @@ export default function Home() {
               >
                 <span className="text-spice-dark">Claim Your </span>
                 <span className="relative inline-block">
-                  <span className="gradient-text">$5,000</span>
+                  <span className="gradient-text">€6,000</span>
                   <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none">
                     <path d="M1 5.5C47 2 153 2 199 5.5" stroke="url(#underline-gradient)" strokeWidth="3" strokeLinecap="round" />
                     <defs>
@@ -80,7 +80,7 @@ export default function Home() {
                   </svg>
                 </span>
                 <br />
-                <span className="text-spice-dark">Funded Challenge – </span>
+                <span className="text-spice-dark">2-Step Challenge – </span>
                 <span className="text-green-500">FREE</span>
               </motion.h1>
 
@@ -107,7 +107,7 @@ export default function Home() {
               >
                 <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="group relative w-full sm:w-auto px-10 py-5 text-white rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Claim Your $5K Challenge
+                    Claim Your €6K Challenge
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'linear-gradient(135deg, #F59E0B 0%, #E21D1D 100%)' }}></div>
