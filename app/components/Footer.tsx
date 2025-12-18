@@ -102,8 +102,13 @@ export default function Footer() {
 
                 {/* Disclaimer */}
                 <div className="mt-8 pt-6 border-t border-gray-100">
+                    <div className="bg-gray-50 rounded-xl p-4 mb-4">
+                        <p className="text-xs text-gray-600 text-center leading-relaxed">
+                            <strong className="text-gray-700">⚠️ Risk Warning:</strong> Trading foreign exchange (Forex) and Contracts for Difference (CFDs) on margin carries a high level of risk and may not be suitable for all investors. You could sustain a loss of some or all of your invested capital. The high degree of leverage can work against you as well as for you. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite.
+                        </p>
+                    </div>
                     <p className="text-xs text-spice-muted/70 text-center leading-relaxed max-w-4xl mx-auto">
-                        <strong className="text-spice-muted">Disclaimer:</strong> This account is for educational and demo purposes only. No real funds or payouts are associated with this specific €6K practice challenge. Trading involves significant risk, and you should only trade with capital you can afford to lose. Past performance is not indicative of future results.
+                        <strong className="text-spice-muted">Educational Disclaimer:</strong> This €6K practice challenge is for educational and simulation purposes only. No real funds are deposited, traded, or paid out. This platform provides a risk-free environment to learn trading strategies. SpiceProp is a simulation platform and does not provide financial advice. Past performance in simulation does not guarantee future results in live trading. Please consult a qualified financial advisor before making any investment decisions.
                     </p>
                 </div>
             </div>

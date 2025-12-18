@@ -139,15 +139,20 @@ export default function Home() {
                 </span>
               </motion.div>
 
-              {/* Disclaimer */}
-              <motion.p
+              {/* Disclaimer - Google Ads Compliant */}
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="mt-6 text-xs text-center max-w-2xl mx-auto" style={{ color: '#94a3b8' }}
+                className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl max-w-2xl mx-auto"
               >
-                ⚠️ Educational practice account. No real funds or payouts involved.
-              </motion.p>
+                <p className="text-xs text-amber-800 text-center leading-relaxed">
+                  <strong>⚠️ Important Notice:</strong> This is an educational simulation account for practice purposes only.
+                  No real money is involved and no actual payouts are made. Trading CFDs and forex carries a high level of risk
+                  and may not be suitable for all investors. Past performance is not indicative of future results.
+                  Please ensure you fully understand the risks involved.
+                </p>
+              </motion.div>
             </div>
           </div>
 
