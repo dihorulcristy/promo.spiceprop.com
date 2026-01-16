@@ -51,6 +51,9 @@ export default function Navbar() {
                         <Link href="#testimonials" className="text-spice-dark/70 hover:text-spice-red transition-all duration-300 font-medium animated-underline">
                             Reviews
                         </Link>
+                        <Link href="/affiliates" className="text-spice-dark/70 hover:text-spice-red transition-all duration-300 font-medium animated-underline">
+                            Affiliates
+                        </Link>
                     </div>
 
                     {/* Desktop CTA */}

@@ -55,6 +55,7 @@ export default function Footer() {
                             <li><a href="https://spiceprop.com/jalapeno" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Challenges</a></li>
                             <li><a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Free €6K Trial</a></li>
                             <li><a href="https://spiceprop.com/payouts" target="_blank" rel="noopener noreferrer" className="text-spice-muted hover:text-spice-red transition-colors">Payouts</a></li>
+                            <li><Link href="/affiliates" className="text-spice-muted hover:text-spice-red transition-colors">Affiliates</Link></li>
                         </ul>
                     </div>
 
