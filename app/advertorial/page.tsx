@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function AdvertorialPage() {
-    const affiliateLink = "https://my.spiceprop.com/agent_pp.html?agent_pp=28203897";
+    const affiliateLink = "https://promo.spiceprop.com/";
 
     return (
         <div className="min-h-screen bg-white">

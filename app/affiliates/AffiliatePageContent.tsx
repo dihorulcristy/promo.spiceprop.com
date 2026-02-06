@@ -73,7 +73,7 @@ export default function AffiliatePageContent() {
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row gap-5 w-full justify-center lg:justify-start">
-                                    <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28257763" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-5 text-white rounded-xl font-bold text-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center group relative" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
+                                    <a href="https://promo.spiceprop.com/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-5 text-white rounded-xl font-bold text-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center group relative" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
                                         <span className="relative z-10 flex items-center justify-center gap-2">
                                             Join Program Now
                                             <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -177,7 +177,7 @@ export default function AffiliatePageContent() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28257763" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-5 text-white rounded-xl font-bold text-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center group relative" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
+                                <a href="https://promo.spiceprop.com/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-5 text-white rounded-xl font-bold text-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center group relative" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
                                     <span className="relative z-10 flex items-center justify-center gap-2">
                                         Join Program Now
                                         <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />

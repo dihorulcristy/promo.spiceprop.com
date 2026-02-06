@@ -58,10 +58,10 @@ export default function Navbar() {
 
                     {/* Desktop CTA */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="text-spice-dark font-semibold hover:text-spice-red transition-colors px-4 py-2">
+                        <a href="https://promo.spiceprop.com/" target="_blank" rel="noopener noreferrer" className="text-spice-dark font-semibold hover:text-spice-red transition-colors px-4 py-2">
                             Login
                         </a>
-                        <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden text-white px-7 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group flex items-center" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
+                        <a href="https://promo.spiceprop.com/" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden text-white px-7 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group flex items-center" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
                             <span className="relative z-10 flex items-center gap-2">
                                 Get €6K FREE
                                 <span className="inline-block w-2 h-2 bg-white rounded-full animate-pulse"></span>
@@ -88,7 +88,7 @@ export default function Navbar() {
                             <Link href="#how-it-works" className="text-spice-dark font-medium py-2">How it Works</Link>
                             <Link href="#testimonials" className="text-spice-dark font-medium py-2">Reviews</Link>
                             <hr className="border-gray-100" />
-                            <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="w-full text-white py-3 rounded-full font-bold text-center block" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
+                            <a href="https://promo.spiceprop.com/" target="_blank" rel="noopener noreferrer" className="w-full text-white py-3 rounded-full font-bold text-center block" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
                                 Get €6K FREE
                             </a>
                         </div>
