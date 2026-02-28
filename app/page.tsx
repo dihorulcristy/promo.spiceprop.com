@@ -50,13 +50,13 @@ export default function Home() {
               >
                 <span className="flex items-center gap-2">
                   <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-spice-red opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-spice-red"></span>
                   </span>
-                  <span className="text-green-600 font-semibold text-sm">Limited Time</span>
+                  <span className="text-spice-red font-semibold text-sm">Chilli Pepper Program</span>
                 </span>
                 <span className="w-px h-4 bg-gray-200"></span>
-                <span className="text-spice-dark font-bold text-sm">100% OFF 2-Step with code SPICEFREE</span>
+                <span className="text-spice-dark font-bold text-sm">Get Funded in 1 Step</span>
               </motion.div>
 
               {/* Main Headline - SEO Optimized */}
@@ -66,9 +66,9 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1]"
               >
-                <span className="text-spice-dark">Free Prop Firm Trial </span>
+                <span className="text-spice-dark">The Ultimate </span>
                 <span className="relative inline-block">
-                  <span className="gradient-text">€6,000</span>
+                  <span className="gradient-text">1-Phase</span>
                   <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none">
                     <path d="M1 5.5C47 2 153 2 199 5.5" stroke="url(#underline-gradient)" strokeWidth="3" strokeLinecap="round" />
                     <defs>
@@ -80,8 +80,8 @@ export default function Home() {
                   </svg>
                 </span>
                 <br />
-                <span className="text-spice-dark">Demo Account – </span>
-                <span className="text-green-500">100% FREE</span>
+                <span className="text-spice-dark">Challenge – </span>
+                <span className="text-spice-red">Get Funded Faster</span>
               </motion.h1>
 
               {/* Subheadline - SEO Optimized */}
@@ -91,11 +91,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-xl md:text-2xl text-spice-muted mb-10 max-w-3xl mx-auto leading-relaxed"
               >
-                Get your <strong>prop trading demo account free</strong>. Use code{" "}
-                <span className="inline-flex items-center gap-1 px-4 py-1.5 rounded-lg font-mono font-bold text-lg shadow-lg" style={{ backgroundColor: '#0F172A', color: '#ffffff' }}>
-                  SPICEFREE
-                </span>{" "}
-                to <strong>test SpiceProp for free</strong>. Start your <strong>funded account free practice</strong> today!
+                Fast-track your trading career. Pass our transparent <strong>1-step evaluation</strong> with a 10% profit target, generous 11% maximum drawdown, and <strong>trade with up to 1:100 leverage</strong>. Hit your target and start earning up to 80% of your profits!
               </motion.p>
 
               {/* CTA Buttons */}
@@ -105,15 +101,15 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
               >
-                <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="group relative w-full sm:w-auto px-10 py-5 text-white rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
+                <a href="https://my.spiceprop.com/registration" target="_blank" rel="noopener noreferrer" className="group relative w-full sm:w-auto px-10 py-5 text-white rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Claim Your €6K Challenge
+                    Start Your 1-Phase Challenge
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'linear-gradient(135deg, #F59E0B 0%, #E21D1D 100%)' }}></div>
                 </a>
-                <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="group w-full sm:w-auto px-8 py-5 bg-white text-spice-dark border-2 border-gray-200 rounded-2xl font-bold text-lg hover:border-spice-red/30 hover:bg-spice-light transition-all duration-300 flex items-center justify-center">
-                  View All Challenges
+                <a href="https://spiceprop.com/en/chili-pepper" target="_blank" rel="noopener noreferrer" className="group w-full sm:w-auto px-8 py-5 bg-white text-spice-dark border-2 border-gray-200 rounded-2xl font-bold text-lg hover:border-spice-red/30 hover:bg-spice-light transition-all duration-300 flex items-center justify-center">
+                  Read the Rules
                   <ChevronRight className="inline w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </a>
               </motion.div>
@@ -123,11 +119,11 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="flex flex-wrap items-center justify-center gap-6 text-sm text-spice-muted"
+                className="flex flex-wrap items-center justify-center gap-6 text-sm text-spice-muted mb-8"
               >
                 <span className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-green-500" />
-                  No credit card required
+                  One simple step
                 </span>
                 <span className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-green-500" />
@@ -139,7 +135,7 @@ export default function Home() {
                 </span>
               </motion.div>
 
-              {/* Disclaimer - Google Ads Compliant */}
+              {/* Disclaimer */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -147,10 +143,9 @@ export default function Home() {
                 className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl max-w-2xl mx-auto"
               >
                 <p className="text-xs text-amber-800 text-center leading-relaxed">
-                  <strong>⚠️ Important Notice:</strong> This is an educational simulation account for practice purposes only.
-                  No real money is involved and no actual payouts are made. Trading CFDs and forex carries a high level of risk
-                  and may not be suitable for all investors. Past performance is not indicative of future results.
-                  Please ensure you fully understand the risks involved.
+                  <strong>⚠️ Risk Warning:</strong> All content published and distributed by SpiceProp is for educational purposes only.
+                  Trading carries a high level of risk and may not be suitable for all investors. Any simulated performance results have certain limitations.
+                  Ensure you fully understand the risks before participating.
                 </p>
               </motion.div>
             </div>
@@ -227,15 +222,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* COMPARISON TABLE - SEO: Free Prop Firm Trial */}
+        {/* COMPARISON TABLE - SEO: 1-Phase Prop Firm Challenge */}
         <section id="comparison" className="py-24 bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div {...fadeInUp} className="text-center mb-16">
-              <span className="inline-block text-spice-red font-semibold text-sm uppercase tracking-wider mb-4">Free Prop Firm Trial</span>
+              <span className="inline-block text-spice-red font-semibold text-sm uppercase tracking-wider mb-4">1-Phase Prop Firm Challenge</span>
               <h2 className="text-4xl md:text-5xl font-extrabold text-spice-dark mb-6">
-                Why <span className="gradient-text">Test SpiceProp for Free</span>?
+                Why Our <span className="gradient-text">1-Phase</span> is Better
               </h2>
-              <p className="text-xl text-spice-muted">Compare our FREE €6K prop trading demo account. No deposit required - start your funded account free practice!</p>
+              <p className="text-xl text-spice-muted">Compare our 1-step evaluation rules. Generous limits, big leverage, and fewer restrictions.</p>
             </motion.div>
 
             <motion.div {...fadeInUp} className="overflow-hidden bg-white shadow-2xl shadow-gray-200/50 rounded-3xl border border-gray-100">
@@ -247,25 +242,26 @@ export default function Home() {
                       <th className="p-6 bg-gradient-to-b from-spice-light to-orange-50 border-t-4 border-t-spice-red w-1/4 text-center">
                         <div className="flex flex-col items-center">
                           <span className="text-xl font-bold text-spice-dark">SpiceProp</span>
-                          <span className="text-xs text-white bg-spice-red px-3 py-1 rounded-full mt-2 font-bold uppercase tracking-wide">€6K FREE</span>
+                          <span className="text-xs text-white bg-spice-red px-3 py-1 rounded-full mt-2 font-bold uppercase tracking-wide">1-Phase</span>
                         </div>
                       </th>
-                      <th className="p-6 w-1/4 text-center font-bold text-gray-400">FTMO</th>
-                      <th className="p-6 w-1/4 text-center font-bold text-gray-400">FundedNext</th>
+                      <th className="p-6 w-1/4 text-center font-bold text-gray-400">FTMO (2-Phase)</th>
+                      <th className="p-6 w-1/4 text-center font-bold text-gray-400">FundingPips (1-Step)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
                     {[
-                      { label: "Entry Cost", spice: "$0 (Free)", comp1: "$155+", comp2: "$129+" },
-                      { label: "Time Limit", spice: "Unlimited", comp1: "30 Days", comp2: "Unlimited" },
-                      { label: "Profit Target", spice: "7.5%", comp1: "10%", comp2: "8%" },
-                      { label: "Platforms", spice: "MT5", comp1: "MT4, MT5", comp2: "MT4, MT5" },
-                      { label: "Spreads", spice: "Low Spreads", comp1: "Standard", comp2: "Standard" },
+                      { label: "Profit Target", spice: "10%", comp1: "10% + 5%", comp2: "10%" },
+                      { label: "Max Overall Drawdown", spice: "11%", comp1: "10%", comp2: "6%" },
+                      { label: "Max Daily Drawdown", spice: "4.5%", comp1: "5%", comp2: "4%" },
+                      { label: "Leverage", spice: "1:100", comp1: "1:100", comp2: "1:30" },
+                      { label: "Minimum Trading Days", spice: "3 Days", comp1: "4 Days", comp2: "0 Days" },
+                      { label: "Time Limit", spice: "Unlimited", comp1: "Unlimited", comp2: "Unlimited" },
                     ].map((row, i) => (
                       <tr key={i} className="hover:bg-gray-50/50 transition-colors">
                         <td className="p-6 font-semibold text-spice-dark">{row.label}</td>
                         <td className="p-6 text-center bg-spice-light/30">
-                          <span className={`font-bold ${row.spice.includes('Free') || row.spice.includes('Unlimited') ? 'text-green-600' : 'text-spice-dark'}`}>
+                          <span className={`font-bold ${row.spice.includes('11%') || row.spice.includes('1:100') || row.spice.includes('Unlimited') ? 'text-green-600' : 'text-spice-dark'}`}>
                             {row.spice}
                           </span>
                         </td>
@@ -286,9 +282,9 @@ export default function Home() {
             <motion.div {...fadeInUp} className="text-center mb-16">
               <span className="inline-block text-spice-red font-semibold text-sm uppercase tracking-wider mb-4">Getting Started</span>
               <h2 className="text-4xl md:text-5xl font-extrabold text-spice-dark mb-6">
-                Start in <span className="gradient-text">3 Steps</span>
+                Funded in <span className="gradient-text">3 Steps</span>
               </h2>
-              <p className="text-xl text-spice-muted">Your journey to becoming a funded trader starts here.</p>
+              <p className="text-xl text-spice-muted">Your fastest route to managing simulated capital.</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
@@ -296,9 +292,9 @@ export default function Home() {
               <div className="hidden md:block absolute top-20 left-[20%] right-[20%] h-0.5 bg-gradient-to-r from-spice-red via-spice-gold to-spice-red"></div>
 
               {[
-                { step: 1, title: "Sign Up & Use Code", desc: "Register and apply code SPICEFREE at checkout for 100% off." },
-                { step: 2, title: "Get Credentials", desc: "Receive instant login details for your preferred trading platform." },
-                { step: 3, title: "Show Your Skills", desc: "Trade the markets. Hit the target and unlock your funded account." },
+                { step: 1, title: "Choose Your Account", desc: "Select a 1-Phase account size from €5K up to €100K to match your trading style." },
+                { step: 2, title: "Pass the Evaluation", desc: "Hit the straightforward 10% profit target while respecting drawdown rules." },
+                { step: 3, title: "Get Funded", desc: "Start trading on a simulated funded account and earn up to 80% splits." },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -311,9 +307,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-xl font-bold text-spice-dark mb-3">{item.title}</h3>
                   <p className="text-spice-muted max-w-xs mx-auto">
-                    {item.desc.includes('SPICEFREE') ? (
-                      <>Register and apply code <span className="font-mono font-bold text-spice-red">SPICEFREE</span> at checkout for 100% off.</>
-                    ) : item.desc}
+                    {item.desc}
                   </p>
                 </motion.div>
               ))}
@@ -371,7 +365,7 @@ export default function Home() {
                   </div>
 
                   <p className="mb-6 text-lg leading-relaxed" style={{ color: '#64748b' }}>
-                    "I was skeptical at first, but the free trial let me test their spreads without risking my own money. The execution is flawless. I purchased a challenge immediately after."
+                    "The 1-Phase challenge was exactly what I needed. Passing in a single step allowed me to get straight to trading a funded account without jumping through endless hoops. Flawless execution."
                   </p>
 
                   <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
@@ -395,36 +389,27 @@ export default function Home() {
 
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <motion.div {...fadeInUp}>
-              <span className="inline-block text-spice-red font-semibold text-sm uppercase tracking-wider mb-4">Get Started Today</span>
+              <span className="inline-block text-spice-red font-semibold text-sm uppercase tracking-wider mb-4">Start Your Challenge Today</span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-spice-dark mb-6 leading-tight">
-                Turn Your Skills Into<br />
-                <span className="gradient-text">Real Capital</span>
+                Get Funded With Our<br />
+                <span className="gradient-text">1-Phase Challenge</span>
               </h2>
               <p className="text-xl text-spice-muted mb-10 max-w-2xl mx-auto">
-                Start your FREE €6K Challenge today. No credit card. No risk. Just pure trading.
+                No time limits, 11% drawdown, and fewer restrictions. Start your evaluation today and prove your edge.
               </p>
 
-              {/* Discount Code */}
-              <div className="inline-flex flex-col items-center bg-white rounded-3xl p-6 shadow-xl shadow-spice-red/10 border border-gray-100 mb-10">
-                <p className="text-spice-muted text-sm mb-2">Use this code at checkout:</p>
-                <code className="text-4xl font-mono font-bold gradient-text tracking-widest">SPICEFREE</code>
-                <p className="text-green-600 text-sm font-medium mt-2 flex items-center gap-1">
-                  <CheckCircle2 className="w-4 h-4" /> 100% Discount Applied
-                </p>
-              </div>
-
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://my.spiceprop.com/agent_pp.html?agent_pp=28203897" target="_blank" rel="noopener noreferrer" className="group relative w-full sm:w-auto px-12 py-6 text-white rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
+                <a href="https://my.spiceprop.com/registration" target="_blank" rel="noopener noreferrer" className="group relative w-full sm:w-auto px-12 py-6 text-white rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #E21D1D 0%, #F59E0B 100%)' }}>
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Claim Your FREE €6K Challenge
+                    Start Your Challenge
                     <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'linear-gradient(135deg, #F59E0B 0%, #E21D1D 100%)' }}></div>
                 </a>
               </div>
 
-              <p className="mt-6 text-sm text-spice-muted">
-                Limited accounts available • Instant access
+              <p className="mt-8 text-sm text-spice-muted font-medium">
+                Instant Access • Trade up to €1M • Earn 80% splits
               </p>
             </motion.div>
           </div>
