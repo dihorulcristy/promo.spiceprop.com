@@ -99,21 +99,18 @@ export default function QuizLandingPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                             {[
-                                { name: "George T.", tag: "Funded $100K", quote: "Am terminat challenge-ul de evaluare într-o săptămână. Platforma funcționează perfect, iar payout-ul l-am primit a doua zi pe crypto." },
-                                { name: "Marian P.", tag: "Funded $50K", quote: "După luni de zile pierdute cu alte firme care inventau reguli noi, la SpiceProp 1-Phase Challenge am găsit simplitatea pe care o căutam. Respect." },
-                                { name: "Andrei D.", tag: "Funded $200K", quote: "Spread-uri excelente de 0 pips pe majore, iar split-ul de 80% din prima zi face toată diferența față de competiție." },
+                                { name: "George T.", tag: "Funded $100K", quote: "Am terminat challenge-ul de evaluare într-o săptămână. Platforma funcționează perfect, iar payout-ul l-am primit a doua zi pe crypto.", avatar: "https://i.pravatar.cc/150?img=11" },
+                                { name: "Marian P.", tag: "Funded $50K", quote: "După luni de zile pierdute cu alte firme care inventau reguli noi, la SpiceProp 1-Phase Challenge am găsit simplitatea pe care o căutam. Respect.", avatar: "https://i.pravatar.cc/150?img=68" },
+                                { name: "Andrei D.", tag: "Funded $200K", quote: "Spread-uri excelente de 0 pips pe majore, iar split-ul de 80% din prima zi face toată diferența față de competiție.", avatar: "https://i.pravatar.cc/150?img=15" },
                             ].map((t, i) => (
                                 <motion.div key={i} {...fadeInUp} transition={{ delay: i * 0.1 }} className="bg-white/5 border border-white/10 p-6 rounded-2xl relative">
-                                    <div className="absolute top-4 right-4 opacity-20">
-                                        <Image src="/images/trustpilot-logo.png" alt="Trustpilot" width={80} height={20} className="grayscale" />
-                                    </div>
                                     <div className="flex gap-1 mb-4">
                                         {[...Array(5)].map((_, j) => <Star key={j} className="w-5 h-5 text-yellow-500 fill-yellow-500" />)}
                                     </div>
                                     <p className="text-gray-300 text-sm mb-6 leading-relaxed">"{t.quote}"</p>
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-spice-red to-spice-gold flex items-center justify-center font-bold">
-                                            {t.name.charAt(0)}
+                                        <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-spice-gold shrink-0">
+                                            <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
                                         </div>
                                         <div>
                                             <div className="font-bold text-sm">{t.name}</div>
