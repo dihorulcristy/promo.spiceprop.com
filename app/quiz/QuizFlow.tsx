@@ -29,7 +29,7 @@ export default function QuizFlow() {
     });
     
     // FOMO Elements State
-    const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes in seconds
+    const [timeLeft, setTimeLeft] = useState(60 * 60); // 1 hour in seconds
     const [showCopied, setShowCopied] = useState(false);
     const [viewers, setViewers] = useState(18);
 
@@ -245,11 +245,11 @@ export default function QuizFlow() {
                                 </div>
                             </div>
 
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-spice-dark mb-3 leading-tight">
-                                Perfect Match: Drumul tău spre <span className="text-spice-red">$100,000</span> începe aici.
+                            <h2 className="text-2xl md:text-3xl font-extrabold text-spice-dark mb-3 leading-tight">
+                                Contul tău ideal este <span className="text-spice-red">$100,000</span>.
                             </h2>
                             <p className="text-gray-600 mb-6 text-sm md:text-base leading-relaxed">
-                                Pe baza analizei tale, profilul tău se aliniază perfect cu o carieră de succes în <strong>prop trading</strong>. Ca lideri printre <strong>top funding prop firms</strong>, am creat acest <strong>trading fund</strong> special pentru a-ți oferi calea cea mai eficientă și rapidă de scalare.
+                                Răspunsurile tale indică o compatibilitate perfectă cu o carieră de succes în <strong>prop trading</strong>. Ca lideri printre <strong>top funding prop firms</strong>, am creat acest <strong>trading fund</strong> special pentru a te ajuta să scalezi.
                             </p>
 
                             <div className="bg-white p-1 rounded-3xl border-2 border-spice-gold shadow-2xl relative mb-8">
@@ -269,19 +269,23 @@ export default function QuizFlow() {
                                     <div className="text-sm font-bold text-spice-red uppercase tracking-wider mb-2 flex items-center justify-center gap-1">
                                         <CheckCircle2 className="w-4 h-4" /> {rec.type}
                                     </div>
-                                    <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-spice-dark mb-4 drop-shadow-sm leading-tight">
+                                    <div className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-spice-dark mb-4 drop-shadow-sm leading-tight">
                                         {rec.name}
                                     </div>
                                     
-                                    {/* Pricing Block */}
+                                    {/* Congratulations & Pricing Block */}
                                     <div className="flex flex-col items-center justify-center my-6">
-                                        <div className="text-gray-400 line-through text-2xl font-semibold mb-1">
-                                            {rec.originalPrice}
+                                        <div className="bg-green-50 border border-green-200 text-green-700 font-bold px-4 py-2 rounded-xl mb-4 text-sm md:text-base shadow-sm">
+                                            🎉 Felicitări! Ai deblocat un discount de 28% valabil o oră!
                                         </div>
-                                        <div className="flex items-end justify-center gap-2">
-                                            <span className="text-6xl font-black text-spice-red tracking-tight">{rec.promoPrice}</span>
+                                        
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <div className="text-gray-400 line-through text-xl font-semibold">
+                                                {rec.originalPrice}
+                                            </div>
+                                            <span className="text-4xl md:text-5xl font-black text-spice-red tracking-tight">{rec.promoPrice}</span>
                                         </div>
-                                        <div className="text-green-600 font-bold text-sm mt-2 bg-green-50 px-3 py-1 rounded-full border border-green-200">
+                                        <div className="text-green-600 font-bold text-sm bg-green-50/50 px-3 py-1 rounded-full border border-green-100">
                                             Economisești instant {rec.savings}
                                         </div>
                                     </div>
