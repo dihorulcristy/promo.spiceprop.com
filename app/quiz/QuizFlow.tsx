@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowRight, CheckCircle2, Star, TrendingUp, Clock, Zap, ChevronRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Star, Clock, Zap, Target, Users, Tag, Copy, Shield } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 // Helper for GTM DataLayer
-const pushToDataLayer = (data: any) => {
-    if (typeof window !== "undefined" && (window as any).dataLayer) {
-        (window as any).dataLayer.push(data);
+const pushToDataLayer = (data: Record<string, unknown>) => {
+    if (typeof window !== "undefined" && (window as unknown as { dataLayer: Record<string, unknown>[] }).dataLayer) {
+        (window as unknown as { dataLayer: Record<string, unknown>[] }).dataLayer.push(data);
     } else {
         // Fallback/log for development
         console.log("DataLayer Push:", data);
@@ -30,42 +29,56 @@ export default function QuizFlow() {
     });
     const [lead, setLead] = useState({ name: "", email: "" });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    
+    // FOMO Elements State
+    const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes in seconds
+    const [showCopied, setShowCopied] = useState(false);
+    const [viewers, setViewers] = useState(18);
 
-    // Recommendations Logic
-    const getRecommendation = () => {
-        // Simple logic
-        const isOneStep = answers.style === "Scalping" || answers.style === "Day trading" || answers.experience === "3+ ani";
-
-        let price = "€540";
-        let accountSize = answers.capital.includes("$100K") ? "€100,000" : (answers.capital.includes("$200K+") ? "€200,000" : (answers.capital.includes("$50K") ? "€50,000" : "€25,000"));
-
-        // Naive mapping based on general prop firm pricing
-        if (accountSize === "€25,000") price = "€145";
-        if (accountSize === "€50,000") price = "€265";
-        if (accountSize === "€100,000") price = "€540";
-        if (accountSize === "€200,000") price = "€1,080";
-
-        if (isOneStep) {
-            return {
-                name: "1-Phase Challenge",
-                type: "1-Step",
-                size: accountSize,
-                price: price,
-                why: "Ideal pentru scalperi și day traders. Câștigi o finanțare mai rapid, cu o singură țintă de atins.",
-                perk: "10% Profit Target • Fără limite de timp",
-                link: "https://my.spiceprop.com/agent_pp.html?agent_pp=28203897"
-            };
-        } else {
-            return {
-                name: "2-Phase Challenge",
-                type: "2-Step",
-                size: accountSize,
-                price: price,
-                why: "Perfect pentru swing traders și cei cu o abordare mai conservatoare. Ai un drawdown general mai mare.",
-                perk: "Limits relaxate • Scalare permisă",
-                link: "https://my.spiceprop.com/agent_pp.html?agent_pp=28203897"
-            };
+    useEffect(() => {
+        if (step === 5 && timeLeft > 0) {
+            const timer = setInterval(() => {
+                setTimeLeft((prev) => prev - 1);
+            }, 1000);
+            return () => clearInterval(timer);
         }
+    }, [step, timeLeft]);
+
+    useEffect(() => {
+        if (step === 5) {
+            // Randomize viewers slightly for realism
+            const viewerInterval = setInterval(() => {
+                setViewers(prev => prev + (Math.random() > 0.5 ? 1 : -1));
+            }, 15000);
+            return () => clearInterval(viewerInterval);
+        }
+    }, [step]);
+
+    const formatTime = (seconds: number) => {
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
+        return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    };
+
+    const handleCopyPromo = () => {
+        navigator.clipboard.writeText("Promo30");
+        setShowCopied(true);
+        setTimeout(() => setShowCopied(false), 2000);
+        pushToDataLayer({ event: 'promo_copied' });
+    };
+
+    // Fixed High-Converting Recommendation
+    const getRecommendation = () => {
+        return {
+            name: "Sweet Pepper (2-Phase) Challenge",
+            type: "Prop Trading Fund Top Tier",
+            size: "€100,000",
+            originalPrice: "€470.00",
+            promoPrice: "€335.30",
+            savings: "€134.70",
+            promoCode: "Promo30",
+            link: "https://my.spiceprop.com/registration" // Assuming standard reg flow
+        };
     };
 
     const handleStart = () => {
@@ -118,7 +131,7 @@ export default function QuizFlow() {
     };
 
     const handleCTAClick = () => {
-        pushToDataLayer({ event: 'cta_click' });
+        pushToDataLayer({ event: 'cta_click', product: 'sweet_pepper_100k' });
     };
 
     const rec = getRecommendation();
@@ -153,7 +166,7 @@ export default function QuizFlow() {
                                 <Zap className="w-10 h-10 text-spice-red" />
                             </div>
                             <h2 className="text-3xl md:text-4xl font-extrabold text-spice-dark mb-4">
-                                Găsește challenge-ul perfect pentru tine în 30 de secunde
+                                Găsește challenge&apos;ul perfect pentru tine în 30 de secunde
                             </h2>
                             <p className="text-spice-muted text-lg font-medium mb-10 max-w-md mx-auto">
                                 Fără card. Fără obligații.
@@ -294,69 +307,115 @@ export default function QuizFlow() {
                         </motion.div>
                     )}
 
-                    {/* STEP 5: FINAL RESULT */}
+                    {/* STEP 5: HIGH CONVERTING RESULT */}
                     {step === 5 && (
                         <motion.div key="step5" {...fadeIn} className="text-center">
-                            <span className="inline-block px-4 py-1.5 bg-green-100 text-green-800 font-bold rounded-full text-sm mb-6 animate-pulse">
-                                Potrivire 98% cu profilul tău
-                            </span>
-
-                            <h2 className="text-4xl font-extrabold text-spice-dark mb-2">Recomandarea Ta:</h2>
-                            <div className="text-xl text-spice-muted mb-8">
-                                Contul <span className="font-bold text-spice-dark">{rec.size} {rec.name}</span>
-                            </div>
-
-                            <div className="bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-3xl border border-spice-gold/20 mb-8 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-spice-gold/10 rounded-full blur-2xl"></div>
-
-                                <div className="relative z-10">
-                                    <div className="flex justify-between items-end mb-6 border-b border-spice-gold/20 pb-6">
-                                        <div className="text-left">
-                                            <div className="text-xs font-bold text-spice-red uppercase tracking-wider mb-1">{rec.type}</div>
-                                            <div className="text-3xl font-extrabold text-spice-dark">{rec.size}</div>
-                                        </div>
-                                    </div>
-
-                                    <div className="text-left space-y-4">
-                                        <div>
-                                            <h4 className="font-bold text-gray-900 mb-1 flex items-center gap-2">
-                                                <Star className="w-5 h-5 text-spice-gold fill-spice-gold" />
-                                                De ce ți se potrivește:
-                                            </h4>
-                                            <p className="text-gray-600 text-sm leading-relaxed">
-                                                {rec.why}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-gray-900 mb-1 flex items-center gap-2">
-                                                <TrendingUp className="w-5 h-5 text-spice-gold" />
-                                                Avantaj principal:
-                                            </h4>
-                                            <p className="text-gray-600 text-sm">
-                                                {rec.perk}
-                                            </p>
-                                        </div>
-                                    </div>
+                            {/* Urgent Top Bar */}
+                            <div className="bg-red-50 border border-red-200 rounded-xl p-3 mb-6 flex items-center justify-between shadow-sm">
+                                <div className="flex items-center gap-2 text-red-700 font-bold text-sm">
+                                    <Clock className="w-4 h-4 animate-pulse" />
+                                    <span>Oferta expiră în:</span>
+                                </div>
+                                <div className="font-mono text-xl font-bold text-red-600 bg-white px-3 py-1 rounded shadow-inner">
+                                    {formatTime(timeLeft)}
                                 </div>
                             </div>
 
-                            <a
-                                href={rec.link}
-                                onClick={handleCTAClick}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full block px-8 py-5 bg-gradient-to-r from-red-600 to-orange-500 text-white font-bold text-xl rounded-2xl shadow-xl hover:shadow-red-600/20 hover:-translate-y-1 transition-all relative overflow-hidden group"
-                            >
-                                <span className="relative z-10 flex items-center justify-center gap-2">
-                                    Vezi Oferta Ta
-                                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                                </span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </a>
-                            <p className="mt-4 text-sm font-bold text-spice-red flex items-center justify-center gap-2 cursor-pointer hover:underline decoration-2 underline-offset-4" onClick={handleCTAClick}>
-                                <Zap className="w-4 h-4" />
-                                Promoție activă – vezi prețul special →
+                            <h2 className="text-3xl md:text-4xl font-extrabold text-spice-dark mb-3 leading-tight">
+                                Perfect Match: Drumul tău spre <span className="text-spice-red">$100,000</span> începe aici.
+                            </h2>
+                            <p className="text-gray-600 mb-6 text-sm md:text-base leading-relaxed">
+                                Pe baza analizei tale, profilul tău se aliniază cu <strong>prop trading</strong>-ul orientat pe scalare. Ca una dintre selecțiile <strong>top funding prop firms</strong>, am identificat calea cea mai eficientă pentru tine.
                             </p>
+
+                            <div className="bg-white p-1 rounded-3xl border-2 border-spice-gold shadow-2xl relative mb-8">
+                                {/* Social Proof Badge */}
+                                <div className="absolute -top-4 -right-2 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 border border-gray-700 z-10">
+                                    <Users className="w-3 h-3 text-spice-gold" />
+                                    {viewers} traderi vizualizează asta
+                                </div>
+                                
+                                {/* Limited Spots Indicator */}
+                                <div className="absolute -top-4 -left-2 bg-white text-red-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 border border-red-200 z-10">
+                                    <Target className="w-3 h-3" />
+                                    3/5 conturi promoționale acordate
+                                </div>
+
+                                <div className="bg-gradient-to-b from-orange-50 to-white rounded-t-2xl p-6 border-b border-gray-100">
+                                    <div className="text-sm font-bold text-spice-red uppercase tracking-wider mb-2 flex items-center justify-center gap-1">
+                                        <CheckCircle2 className="w-4 h-4" /> {rec.type}
+                                    </div>
+                                    <div className="text-4xl md:text-5xl font-extrabold text-spice-dark mb-4 drop-shadow-sm">
+                                        {rec.name}
+                                    </div>
+                                    
+                                    {/* Pricing Block */}
+                                    <div className="flex flex-col items-center justify-center my-6">
+                                        <div className="text-gray-400 line-through text-2xl font-semibold mb-1">
+                                            {rec.originalPrice}
+                                        </div>
+                                        <div className="flex items-end justify-center gap-2">
+                                            <span className="text-6xl font-black text-spice-red tracking-tight">{rec.promoPrice}</span>
+                                        </div>
+                                        <div className="text-green-600 font-bold text-sm mt-2 bg-green-50 px-3 py-1 rounded-full border border-green-200">
+                                            Economisești instant {rec.savings}
+                                        </div>
+                                    </div>
+
+                                    {/* Promo Code Box */}
+                                    <div className="max-w-xs mx-auto mb-2">
+                                        <p className="text-xs text-gray-500 font-bold mb-1 uppercase tracking-wider">Folosește codul la checkout:</p>
+                                        <div 
+                                            onClick={handleCopyPromo}
+                                            className="bg-gray-900 text-white rounded-xl p-3 flex items-center justify-between cursor-pointer hover:bg-gray-800 transition-colors border border-gray-700 group shadow-md"
+                                        >
+                                            <span className="font-mono font-bold text-lg text-spice-gold tracking-widest">{rec.promoCode}</span>
+                                            <div className="flex items-center gap-2">
+                                                <span className={`text-xs font-bold ${showCopied ? 'text-green-400' : 'text-gray-400 group-hover:text-white'}`}>
+                                                    {showCopied ? 'Copiat!' : 'Copiază'}
+                                                </span>
+                                                <Copy className={`w-4 h-4 ${showCopied ? 'text-green-400' : 'text-gray-400 group-hover:text-white'}`} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="p-6 bg-white rounded-b-2xl">
+                                    <div className="text-left space-y-4 mb-8">
+                                        <div className="flex items-start gap-3">
+                                            <div className="bg-orange-100 p-1.5 rounded-lg shrink-0 mt-0.5">
+                                                <Star className="w-4 h-4 text-spice-gold fill-spice-gold" />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-gray-900 text-sm">De ce acest cont?</h4>
+                                                <p className="text-gray-600 text-xs leading-relaxed mt-1">
+                                                    Ideal pentru reducerea riscului emoțional. <strong>Finanțarea traderilor</strong> prinde avânt când ai un cont masiv care îți permite să scalezi repede cu reguli generoase de drawdown.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a
+                                        href={rec.link}
+                                        onClick={handleCTAClick}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full block px-8 py-5 bg-[#E21D1D] text-white font-black text-xl rounded-xl shadow-xl shadow-red-500/30 hover:bg-red-700 hover:-translate-y-1 hover:shadow-2xl transition-all relative overflow-hidden group animate-pulse-glow"
+                                    >
+                                        <span className="relative z-10 flex items-center justify-center gap-2">
+                                            Asigură Contul de {rec.size} Acum
+                                            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                                        </span>
+                                        {/* Shine Effect */}
+                                        <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
+                                    </a>
+                                    
+                                    <div className="mt-4 flex items-center justify-center gap-4 text-xs font-bold text-gray-400 grayscale opacity-70">
+                                        <span className="flex items-center gap-1"><Shield className="w-3 h-3" /> Plată Securizată</span>
+                                        <span className="flex items-center gap-1"><Tag className="w-3 h-3" /> Garanție Cel Mai Bun Preț</span>
+                                    </div>
+                                </div>
+                            </div>
                         </motion.div>
                     )}
 
