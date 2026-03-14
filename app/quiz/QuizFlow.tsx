@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ArrowRight, CheckCircle2, Star, TrendingUp, Clock, Zap, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ArrowRight, CheckCircle2, Star, TrendingUp, Clock, Zap, ChevronRight, Copy, Check, Users, AlertCircle, Shield, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -10,7 +10,6 @@ const pushToDataLayer = (data: any) => {
     if (typeof window !== "undefined" && (window as any).dataLayer) {
         (window as any).dataLayer.push(data);
     } else {
-        // Fallback/log for development
         console.log("DataLayer Push:", data);
     }
 };
@@ -21,8 +20,48 @@ type QuizState = {
     style: string;
 };
 
+// Sweet Pepper fixed recommendation — always the best match
+const SWEET_PEPPER_RECOMMENDATION = {
+    name: "Sweet Pepper 100K (2-Step)",
+    type: "2-Step Challenge",
+    size: "€100,000",
+    originalPrice: "€470",
+    discountedPrice: "€335.30",
+    savings: "€134.70",
+    promoCode: "Promo30",
+    why: "As one of the top funding prop firms, our trading fund is designed to empower funding traders like you. The Sweet Pepper 2-Step prop trading model gives you a higher drawdown allowance and a lower-risk path to consistent payouts — perfectly aligned with your profile.",
+    perk: "Higher Drawdown Allowance • Scalable Capital • Lifetime Funding",
+    link: "https://my.spiceprop.com/agent_pp.html?agent_pp=28203897",
+    features: [
+        "10% Phase 1 Profit Target (lower risk entry)",
+        "5% Phase 2 Profit Target (faster funding)",
+        "12% Max Overall Drawdown (most lenient in prop trading)",
+        "No Time Limits — trade at your own pace",
+        "80% Profit Split from Day 1"
+    ]
+};
+
+// Countdown timer hook
+function useCountdown(initialSeconds: number) {
+    const [seconds, setSeconds] = useState(initialSeconds);
+    const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+    useEffect(() => {
+        intervalRef.current = setInterval(() => {
+            setSeconds(prev => (prev > 0 ? prev - 1 : 0));
+        }, 1000);
+        return () => {
+            if (intervalRef.current) clearInterval(intervalRef.current);
+        };
+    }, []);
+
+    const mins = Math.floor(seconds / 60).toString().padStart(2, "0");
+    const secs = (seconds % 60).toString().padStart(2, "0");
+    return { mins, secs, expired: seconds === 0 };
+}
+
 export default function QuizFlow() {
-    const [step, setStep] = useState(0); // 0 = hook, 1-4 = questions, 5 = email, 6 = result
+    const [step, setStep] = useState(0); // 0 = hook, 1-3 = questions, 4 = email, 5 = result
     const [answers, setAnswers] = useState<QuizState>({
         experience: "",
         capital: "",
@@ -30,43 +69,10 @@ export default function QuizFlow() {
     });
     const [lead, setLead] = useState({ name: "", email: "" });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [copied, setCopied] = useState(false);
+    const { mins, secs, expired } = useCountdown(15 * 60); // 15-minute countdown
 
-    // Recommendations Logic
-    const getRecommendation = () => {
-        // Simple logic
-        const isOneStep = answers.style === "Scalping" || answers.style === "Day trading" || answers.experience === "3+ ani";
-
-        let price = "€540";
-        let accountSize = answers.capital.includes("$100K") ? "€100,000" : (answers.capital.includes("$200K+") ? "€200,000" : (answers.capital.includes("$50K") ? "€50,000" : "€25,000"));
-
-        // Naive mapping based on general prop firm pricing
-        if (accountSize === "€25,000") price = "€145";
-        if (accountSize === "€50,000") price = "€265";
-        if (accountSize === "€100,000") price = "€540";
-        if (accountSize === "€200,000") price = "€1,080";
-
-        if (isOneStep) {
-            return {
-                name: "1-Phase Challenge",
-                type: "1-Step",
-                size: accountSize,
-                price: price,
-                why: "Ideal pentru scalperi și day traders. Câștigi o finanțare mai rapid, cu o singură țintă de atins.",
-                perk: "10% Profit Target • Fără limite de timp",
-                link: "https://my.spiceprop.com/agent_pp.html?agent_pp=28203897"
-            };
-        } else {
-            return {
-                name: "2-Phase Challenge",
-                type: "2-Step",
-                size: accountSize,
-                price: price,
-                why: "Perfect pentru swing traders și cei cu o abordare mai conservatoare. Ai un drawdown general mai mare.",
-                perk: "Limits relaxate • Scalare permisă",
-                link: "https://my.spiceprop.com/agent_pp.html?agent_pp=28203897"
-            };
-        }
-    };
+    const rec = SWEET_PEPPER_RECOMMENDATION;
 
     const handleStart = () => {
         pushToDataLayer({ event: 'quiz_start' });
@@ -89,9 +95,6 @@ export default function QuizFlow() {
         setIsSubmitting(true);
 
         try {
-            const rec = getRecommendation();
-
-            // Save lead to Supabase via API route
             await fetch('/api/quiz-leads', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -106,10 +109,9 @@ export default function QuizFlow() {
             });
 
             pushToDataLayer({ event: 'quiz_complete' });
-            setStep(5); // Show results
+            setStep(5);
         } catch (e) {
             console.error(e);
-            // Failsafe: still show results even if DB insert fails
             pushToDataLayer({ event: 'quiz_complete', status: 'error_db' });
             setStep(5);
         } finally {
@@ -118,10 +120,15 @@ export default function QuizFlow() {
     };
 
     const handleCTAClick = () => {
-        pushToDataLayer({ event: 'cta_click' });
+        pushToDataLayer({ event: 'cta_click', plan: rec.name, promo: rec.promoCode });
     };
 
-    const rec = getRecommendation();
+    const handleCopyPromo = () => {
+        navigator.clipboard.writeText(rec.promoCode).then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2500);
+        });
+    };
 
     // Animations
     const fadeIn = {
@@ -133,12 +140,12 @@ export default function QuizFlow() {
 
     return (
         <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 min-h-[450px] relative">
-            {/* Progress Bar (only visible during questions 1-4) */}
-            {step >= 1 && step <= 4 && (
+            {/* Progress Bar (only visible during questions 1-3) */}
+            {step >= 1 && step <= 3 && (
                 <div className="absolute top-0 left-0 w-full h-1.5 bg-gray-100 z-10">
                     <div
                         className="h-full bg-gradient-to-r from-spice-gold to-spice-red transition-all duration-500 ease-out"
-                        style={{ width: `${(step / 4) * 100}%` }}
+                        style={{ width: `${(step / 3) * 100}%` }}
                     ></div>
                 </div>
             )}
@@ -294,68 +301,184 @@ export default function QuizFlow() {
                         </motion.div>
                     )}
 
-                    {/* STEP 5: FINAL RESULT */}
+                    {/* STEP 5: FINAL RESULT — Sweet Pepper Conversion Page */}
                     {step === 5 && (
                         <motion.div key="step5" {...fadeIn} className="text-center">
-                            <span className="inline-block px-4 py-1.5 bg-green-100 text-green-800 font-bold rounded-full text-sm mb-6 animate-pulse">
-                                Potrivire 98% cu profilul tău
+
+                            {/* Match Badge */}
+                            <span className="inline-block px-4 py-1.5 bg-green-100 text-green-800 font-bold rounded-full text-sm mb-4 animate-pulse">
+                                ✓ Potrivire 98% cu profilul tău
                             </span>
 
-                            <h2 className="text-4xl font-extrabold text-spice-dark mb-2">Recomandarea Ta:</h2>
-                            <div className="text-xl text-spice-muted mb-8">
-                                Contul <span className="font-bold text-spice-dark">{rec.size} {rec.name}</span>
+                            {/* Headline */}
+                            <h2 className="text-3xl md:text-4xl font-extrabold text-spice-dark mb-3 leading-tight">
+                                Perfect Match Found: Your{" "}
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500">
+                                    $100,000 Road
+                                </span>{" "}
+                                to Professional Funding Starts Here.
+                            </h2>
+
+                            {/* Sub-headline */}
+                            <p className="text-spice-muted text-base mb-6 max-w-lg mx-auto leading-relaxed">
+                                We&apos;ve analyzed your profile. Based on your goals, the{" "}
+                                <strong className="text-spice-dark">Sweet Pepper 100K (2-Step)</strong> is your most
+                                efficient path to a payout — from one of the{" "}
+                                <strong className="text-spice-dark">top funding prop firms</strong>.
+                            </p>
+
+                            {/* Live Social Proof Bar */}
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+                                <div className="flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                                    </span>
+                                    18 other traders are viewing this right now
+                                </div>
+                                <div className="flex items-center gap-2 bg-amber-50 text-amber-700 px-4 py-2 rounded-full text-sm font-semibold">
+                                    <AlertCircle className="w-4 h-4" />
+                                    3/5 subsidized accounts claimed today
+                                </div>
                             </div>
 
-                            <div className="bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-3xl border border-spice-gold/20 mb-8 relative overflow-hidden">
+                            {/* Countdown Timer */}
+                            <div className={`mb-6 p-4 rounded-2xl border-2 ${expired ? 'border-gray-300 bg-gray-50' : 'border-red-200 bg-red-50'}`}>
+                                <div className="flex items-center justify-center gap-2 mb-2">
+                                    <Clock className={`w-5 h-5 ${expired ? 'text-gray-400' : 'text-red-600'}`} />
+                                    <span className={`font-bold text-sm ${expired ? 'text-gray-500' : 'text-red-700'}`}>
+                                        {expired ? 'Oferta a expirat — Reîncarcă pentru o nouă sesiune' : 'Discount "Promo30" expiră în:'}
+                                    </span>
+                                </div>
+                                {!expired && (
+                                    <div className="flex items-center justify-center gap-2">
+                                        <div className="bg-red-600 text-white font-extrabold text-3xl px-4 py-2 rounded-xl min-w-[60px] text-center tabular-nums">
+                                            {mins}
+                                        </div>
+                                        <span className="text-red-600 font-extrabold text-3xl">:</span>
+                                        <div className="bg-red-600 text-white font-extrabold text-3xl px-4 py-2 rounded-xl min-w-[60px] text-center tabular-nums">
+                                            {secs}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Product Card */}
+                            <div className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-3xl border border-spice-gold/20 mb-6 relative overflow-hidden text-left">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-spice-gold/10 rounded-full blur-2xl"></div>
 
+                                {/* Product Header */}
                                 <div className="relative z-10">
-                                    <div className="flex justify-between items-end mb-6 border-b border-spice-gold/20 pb-6">
-                                        <div className="text-left">
+                                    <div className="flex justify-between items-start mb-4 pb-4 border-b border-spice-gold/20">
+                                        <div>
                                             <div className="text-xs font-bold text-spice-red uppercase tracking-wider mb-1">{rec.type}</div>
-                                            <div className="text-3xl font-extrabold text-spice-dark">{rec.size}</div>
+                                            <div className="text-2xl font-extrabold text-spice-dark">{rec.name}</div>
+                                            <div className="text-sm text-spice-muted mt-1">Account Size: <strong className="text-spice-dark">{rec.size}</strong></div>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="text-sm text-gray-400 line-through font-medium">{rec.originalPrice}</div>
+                                            <div className="text-3xl font-extrabold text-red-600">{rec.discountedPrice}</div>
+                                            <div className="text-xs font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full inline-block mt-1">
+                                                Save {rec.savings}
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div className="text-left space-y-4">
-                                        <div>
-                                            <h4 className="font-bold text-gray-900 mb-1 flex items-center gap-2">
-                                                <Star className="w-5 h-5 text-spice-gold fill-spice-gold" />
-                                                De ce ți se potrivește:
-                                            </h4>
-                                            <p className="text-gray-600 text-sm leading-relaxed">
-                                                {rec.why}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-gray-900 mb-1 flex items-center gap-2">
-                                                <TrendingUp className="w-5 h-5 text-spice-gold" />
-                                                Avantaj principal:
-                                            </h4>
-                                            <p className="text-gray-600 text-sm">
-                                                {rec.perk}
-                                            </p>
-                                        </div>
+                                    {/* Why it fits */}
+                                    <div className="mb-4">
+                                        <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                                            <Star className="w-5 h-5 text-spice-gold fill-spice-gold" />
+                                            Why this is your perfect match:
+                                        </h4>
+                                        <p className="text-gray-600 text-sm leading-relaxed">{rec.why}</p>
+                                    </div>
+
+                                    {/* Features List */}
+                                    <div className="mb-4">
+                                        <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                                            <TrendingUp className="w-5 h-5 text-spice-gold" />
+                                            Sweet Pepper advantage:
+                                        </h4>
+                                        <ul className="space-y-1.5">
+                                            {rec.features.map((feature, i) => (
+                                                <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                                                    <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* Trust Badges */}
+                                    <div className="flex flex-wrap gap-2 pt-3 border-t border-spice-gold/20">
+                                        <span className="flex items-center gap-1 text-xs text-gray-500 bg-white rounded-full px-3 py-1 border">
+                                            <Shield className="w-3 h-3 text-green-500" /> Secure checkout
+                                        </span>
+                                        <span className="flex items-center gap-1 text-xs text-gray-500 bg-white rounded-full px-3 py-1 border">
+                                            <Award className="w-3 h-3 text-spice-gold" /> Top funding prop firm
+                                        </span>
+                                        <span className="flex items-center gap-1 text-xs text-gray-500 bg-white rounded-full px-3 py-1 border">
+                                            <Users className="w-3 h-3 text-blue-500" /> 10,000+ funded traders
+                                        </span>
                                     </div>
                                 </div>
                             </div>
 
+                            {/* Promo Code Box */}
+                            <div className="mb-5 p-4 bg-amber-50 border-2 border-amber-300 rounded-2xl">
+                                <p className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2">
+                                    Apply your exclusive promo code at checkout:
+                                </p>
+                                <div className="flex items-center gap-3">
+                                    <div className="flex-1 bg-white border-2 border-dashed border-amber-400 rounded-xl px-5 py-3 font-extrabold text-2xl text-spice-dark tracking-widest text-center select-all">
+                                        {rec.promoCode}
+                                    </div>
+                                    <button
+                                        onClick={handleCopyPromo}
+                                        className={`flex items-center gap-2 px-4 py-3 rounded-xl font-bold text-sm transition-all ${
+                                            copied
+                                                ? 'bg-green-500 text-white'
+                                                : 'bg-amber-400 hover:bg-amber-500 text-amber-900'
+                                        }`}
+                                    >
+                                        {copied ? (
+                                            <><Check className="w-4 h-4" /> Copied!</>
+                                        ) : (
+                                            <><Copy className="w-4 h-4" /> Copy</>
+                                        )}
+                                    </button>
+                                </div>
+                                <p className="text-xs text-amber-600 mt-2 text-center">
+                                    30% OFF — saves you <strong>{rec.savings}</strong> instantly
+                                </p>
+                            </div>
+
+                            {/* CTA Button with pulse animation */}
                             <a
                                 href={rec.link}
                                 onClick={handleCTAClick}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full block px-8 py-5 bg-gradient-to-r from-red-600 to-orange-500 text-white font-bold text-xl rounded-2xl shadow-xl hover:shadow-red-600/20 hover:-translate-y-1 transition-all relative overflow-hidden group"
+                                className="w-full block px-8 py-5 bg-gradient-to-r from-red-600 to-orange-500 text-white font-extrabold text-xl rounded-2xl shadow-xl hover:shadow-red-600/30 hover:-translate-y-1 transition-all relative overflow-hidden group animate-pulse-glow"
+                                style={{
+                                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                                }}
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2">
-                                    Vezi Oferta Ta
+                                    Secure My $100K Account Now
                                     <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                                 </span>
                                 <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             </a>
-                            <p className="mt-4 text-sm font-bold text-spice-red flex items-center justify-center gap-2 cursor-pointer hover:underline decoration-2 underline-offset-4" onClick={handleCTAClick}>
+
+                            {/* Scarcity reminder */}
+                            <p className="mt-3 text-sm font-semibold text-red-600 flex items-center justify-center gap-2">
                                 <Zap className="w-4 h-4" />
-                                Promoție activă – vezi prețul special →
+                                Limited: only 5 subsidized accounts available per day
+                            </p>
+
+                            <p className="mt-2 text-xs text-gray-400 text-center">
+                                Use code <strong className="text-spice-dark">{rec.promoCode}</strong> at checkout to apply your 30% discount
                             </p>
                         </motion.div>
                     )}
