@@ -10,20 +10,19 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   // Primary SEO - Core Keywords Focus
-  title: "Free Prop Firm Trial | €6K Demo Account - SpiceProp",
-  description: "Get your FREE prop firm trial today! Test SpiceProp for free with a €6K prop trading demo account. Start your funded account free practice now - no deposit required.",
+  title: "SpiceProp - Premier Prop Trading Firm",
+  description: "Join SpiceProp, a leading prop trading firm. Get funded up to €100K with our challenges and scale your trading career today.",
 
   // Keywords targeting - Core focus
   keywords: [
-    "free prop firm trial",
-    "prop trading demo account free",
-    "test spiceprop for free",
-    "funded account free practice",
-    "free funded account",
-    "prop firm demo",
-    "free trading challenge",
-    "prop trading practice account",
-    "spiceprop free trial"
+    "prop trading firm",
+    "funded trading account",
+    "prop firm challenge",
+    "forex funded account",
+    "spiceprop",
+    "best prop firm",
+    "prop trading",
+    "funded trader"
   ],
 
   // Canonical URL
@@ -33,8 +32,8 @@ export const metadata: Metadata = {
 
   // Open Graph for social sharing
   openGraph: {
-    title: "Free Prop Firm Trial | €6K Demo Account - SpiceProp",
-    description: "Get your FREE prop trading demo account. Test SpiceProp for free with €6K funded account practice. No deposit required!",
+    title: "SpiceProp - Premier Prop Trading Firm",
+    description: "Join SpiceProp and get funded up to €100K. Start your prop trading journey today.",
     url: "https://promo.spiceprop.com",
     siteName: "SpiceProp",
     locale: "en_US",
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "SpiceProp - Free Prop Firm Trial",
+        alt: "SpiceProp - Prop Trading Firm",
       },
     ],
   },
@@ -52,8 +51,8 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "Free Prop Firm Trial | €6K Demo - SpiceProp",
-    description: "FREE prop trading demo account. Test SpiceProp for free. €6K funded account practice - no deposit required!",
+    title: "SpiceProp - Premier Prop Trading Firm",
+    description: "Funded trading accounts up to €100K. Join SpiceProp today.",
     images: ["/images/og-image.png"],
   },
 
@@ -87,16 +86,14 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "FinancialService",
     "name": "SpiceProp",
-    "description": "Free prop firm trial with €6K demo account. Practice prop trading risk-free. Best FTMO and FundedNext alternative.",
+    "description": "Leading prop trading firm offering funded accounts up to €100K. Best FTMO and FundedNext alternative.",
     "url": "https://sice-prop.vercel.app",
     "logo": "https://sice-prop.vercel.app/images/logo.png",
-    "priceRange": "Free",
+    "priceRange": "$$",
     "offers": {
       "@type": "Offer",
-      "name": "Free Prop Firm Trial",
-      "description": "€6K funded account demo - 100% FREE with code SPICEFREE",
-      "price": "0",
-      "priceCurrency": "EUR",
+      "name": "SpiceProp Trading Challenges",
+      "description": "Get funded and start trading with SpiceProp.",
       "availability": "https://schema.org/InStock"
     },
     "aggregateRating": {
