@@ -27,8 +27,6 @@ export default function QuizFlow() {
         capital: "",
         style: "",
     });
-    const [lead, setLead] = useState({ name: "", email: "" });
-    const [isSubmitting, setIsSubmitting] = useState(false);
     
     // FOMO Elements State
     const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes in seconds
@@ -90,45 +88,20 @@ export default function QuizFlow() {
     const answerQuestion = (field: keyof QuizState, value: string) => {
         setAnswers({ ...answers, [field]: value });
         const nextStep = step + 1;
-        setStep(nextStep);
-
-        if (nextStep <= 3) {
-            pushToDataLayer({ event: 'quiz_step', step_number: nextStep });
+        
+        // Skip step 4 (formerly email gate) and go directly to results
+        if (nextStep === 4) {
+             setStep(5);
+             pushToDataLayer({ event: 'quiz_complete', status: 'direct_results' });
+        } else {
+             setStep(nextStep);
+             if (nextStep <= 3) {
+                 pushToDataLayer({ event: 'quiz_step', step_number: nextStep });
+             }
         }
     };
 
-    const handleSubmitEmail = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
 
-        try {
-            const rec = getRecommendation();
-
-            // Save lead to Supabase via API route
-            await fetch('/api/quiz-leads', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: lead.name,
-                    email: lead.email,
-                    experience: answers.experience,
-                    capital: answers.capital,
-                    style: answers.style,
-                    recommendedPlan: `${rec.name} ${rec.size}`
-                }),
-            });
-
-            pushToDataLayer({ event: 'quiz_complete' });
-            setStep(5); // Show results
-        } catch (e) {
-            console.error(e);
-            // Failsafe: still show results even if DB insert fails
-            pushToDataLayer({ event: 'quiz_complete', status: 'error_db' });
-            setStep(5);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
 
     const handleCTAClick = () => {
         pushToDataLayer({ event: 'cta_click', product: 'sweet_pepper_100k' });
@@ -256,56 +229,7 @@ export default function QuizFlow() {
                         </motion.div>
                     )}
 
-                    {/* STEP 4: EMAIL GATE */}
-                    {step === 4 && (
-                        <motion.div key="step4" {...fadeIn} className="text-center py-4">
-                            <div className="w-16 h-16 bg-green-50 rounded-full mx-auto flex items-center justify-center mb-6">
-                                <CheckCircle2 className="w-8 h-8 text-green-500" />
-                            </div>
-                            <h2 className="text-3xl font-bold text-spice-dark mb-3">Analizăm rezultatele tale...</h2>
-                            <p className="text-spice-muted mb-8">
-                                Am găsit challenge-ul perfect pentru tine. Unde îți trimitem recomandarea personalizată?
-                            </p>
 
-                            <form onSubmit={handleSubmitEmail} className="max-w-md mx-auto space-y-4 text-left">
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-1">Prenume (opțional)</label>
-                                    <input
-                                        type="text"
-                                        placeholder="ex: Alex"
-                                        value={lead.name}
-                                        onChange={e => setLead({ ...lead, name: e.target.value })}
-                                        className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-spice-gold focus:ring-4 focus:ring-spice-gold/10 outline-none transition-all"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-1">Adresa de Email *</label>
-                                    <input
-                                        type="email"
-                                        required
-                                        placeholder="emailul.tau@gmail.com"
-                                        value={lead.email}
-                                        onChange={e => setLead({ ...lead, email: e.target.value })}
-                                        className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-spice-gold focus:ring-4 focus:ring-spice-gold/10 outline-none transition-all"
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full mt-4 px-8 py-5 bg-[#0F172A] text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
-                                >
-                                    {isSubmitting ? 'Se generează...' : 'Vezi recomandarea mea'}
-                                    {!isSubmitting && <ArrowRight className="w-5 h-5" />}
-                                </button>
-                                <div className="text-center mt-4">
-                                    <p className="text-xs text-gray-400 flex items-center justify-center gap-1">
-                                        Păstrăm datele tale în siguranță. Fără spam.
-                                    </p>
-                                </div>
-                            </form>
-                        </motion.div>
-                    )}
 
                     {/* STEP 5: HIGH CONVERTING RESULT */}
                     {step === 5 && (
@@ -325,27 +249,27 @@ export default function QuizFlow() {
                                 Perfect Match: Drumul tău spre <span className="text-spice-red">$100,000</span> începe aici.
                             </h2>
                             <p className="text-gray-600 mb-6 text-sm md:text-base leading-relaxed">
-                                Pe baza analizei tale, profilul tău se aliniază cu <strong>prop trading</strong>-ul orientat pe scalare. Ca una dintre selecțiile <strong>top funding prop firms</strong>, am identificat calea cea mai eficientă pentru tine.
+                                Pe baza analizei tale, profilul tău se aliniază perfect cu o carieră de succes în <strong>prop trading</strong>. Ca lideri printre <strong>top funding prop firms</strong>, am creat acest <strong>trading fund</strong> special pentru a-ți oferi calea cea mai eficientă și rapidă de scalare.
                             </p>
 
                             <div className="bg-white p-1 rounded-3xl border-2 border-spice-gold shadow-2xl relative mb-8">
                                 {/* Social Proof Badge */}
-                                <div className="absolute -top-4 -right-2 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 border border-gray-700 z-10">
-                                    <Users className="w-3 h-3 text-spice-gold" />
-                                    {viewers} traderi vizualizează asta
+                                <div className="absolute -top-3 sm:-top-4 -right-2 sm:-right-4 bg-gray-900 text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg flex items-center gap-1 border border-gray-700 z-10 whitespace-nowrap">
+                                    <Users className="w-3 h-3 text-spice-gold shrink-0" />
+                                    <span>{viewers} traderi</span>
                                 </div>
                                 
                                 {/* Limited Spots Indicator */}
-                                <div className="absolute -top-4 -left-2 bg-white text-red-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 border border-red-200 z-10">
-                                    <Target className="w-3 h-3" />
-                                    3/5 conturi promoționale acordate
+                                <div className="absolute -top-12 sm:-top-4 left-1/2 sm:left-auto sm:-left-4 -translate-x-1/2 sm:translate-x-0 bg-white text-red-600 text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg flex items-center gap-1 border border-red-200 z-10 whitespace-nowrap w-max">
+                                    <Target className="w-3 h-3 shrink-0" />
+                                    <span>3/5 conturi promoționale</span>
                                 </div>
 
-                                <div className="bg-gradient-to-b from-orange-50 to-white rounded-t-2xl p-6 border-b border-gray-100">
+                                <div className="bg-gradient-to-b from-orange-50 to-white md:rounded-t-2xl rounded-t-xl p-4 sm:p-6 border-b border-gray-100 mt-6 sm:mt-0">
                                     <div className="text-sm font-bold text-spice-red uppercase tracking-wider mb-2 flex items-center justify-center gap-1">
                                         <CheckCircle2 className="w-4 h-4" /> {rec.type}
                                     </div>
-                                    <div className="text-4xl md:text-5xl font-extrabold text-spice-dark mb-4 drop-shadow-sm">
+                                    <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-spice-dark mb-4 drop-shadow-sm leading-tight">
                                         {rec.name}
                                     </div>
                                     
@@ -388,8 +312,8 @@ export default function QuizFlow() {
                                             </div>
                                             <div>
                                                 <h4 className="font-bold text-gray-900 text-sm">De ce acest cont?</h4>
-                                                <p className="text-gray-600 text-xs leading-relaxed mt-1">
-                                                    Ideal pentru reducerea riscului emoțional. <strong>Finanțarea traderilor</strong> prinde avânt când ai un cont masiv care îți permite să scalezi repede cu reguli generoase de drawdown.
+                                                <p className="text-gray-600 text-xs md:text-sm leading-relaxed mt-1">
+                                                    Ideal pentru reducerea riscului emoțional. Când vine vorba de <strong>funding traders</strong>, succesul prinde avânt dacă beneficiezi de un cont masiv care îți permite să scalezi rapid cu reguli generoase de drawdown.
                                                 </p>
                                             </div>
                                         </div>
