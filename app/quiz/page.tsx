@@ -71,7 +71,7 @@ export default function QuizLandingPage() {
                             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-12 text-sm text-gray-600 font-medium">
                                 <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-gray-200 shadow-sm">
                                     <Star className="w-4 h-4 text-[#00B67A] fill-[#00B67A]" />
-                                    <span className="font-bold text-[#0F172A]">4.8/5</span> Trustpilot
+                                    <span className="font-bold text-[#0F172A]">4/5</span> Trustpilot
                                 </div>
                                 <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-full border border-gray-200 shadow-sm">
                                     <Users className="w-4 h-4 text-spice-red" />
@@ -99,9 +99,9 @@ export default function QuizLandingPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                             {[
-                                { name: "George T.", tag: "Funded $100K", quote: "Am terminat challenge-ul de evaluare într-o săptămână. Platforma funcționează perfect, iar payout-ul l-am primit a doua zi pe crypto.", avatar: "https://i.pravatar.cc/150?img=11" },
+                                { name: "George T.", tag: "Funded $100K", quote: "Am terminat challenge-ul de evaluare într-o săptămână. Platforma funcționează perfect, iar payout-ul l-am primit în 5 zile." , avatar: "https://i.pravatar.cc/150?img=11" },
                                 { name: "Marian P.", tag: "Funded $50K", quote: "După luni de zile pierdute cu alte firme care inventau reguli noi, la SpiceProp 1-Phase Challenge am găsit simplitatea pe care o căutam. Respect.", avatar: "https://i.pravatar.cc/150?img=68" },
-                                { name: "Andrei D.", tag: "Funded $200K", quote: "Spread-uri excelente de 0 pips pe majore, iar split-ul de 80% din prima zi face toată diferența față de competiție.", avatar: "https://i.pravatar.cc/150?img=15" },
+                                { name: "Andrei D.", tag: "Funded $200K", quote: "Am mai multe conturi la ei și până acum nu am nimic de reproșat. Am pierdut un cont, dar a fost vina mea că nu am fost atent la drawdown-ul maxim zilnic.", avatar: "https://i.pravatar.cc/150?img=15" },
                             ].map((t, i) => (
                                 <motion.div key={i} {...fadeInUp} transition={{ delay: i * 0.1 }} className="bg-white/5 border border-white/10 p-6 rounded-2xl relative">
                                     <div className="flex gap-1 mb-4">
@@ -138,7 +138,7 @@ export default function QuizLandingPage() {
                     <div className="max-w-6xl mx-auto px-4">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
                             {[
-                                { icon: Zap, title: "Payouts în 24h", desc: "Banii tăi în cont în 24 de ore." },
+                                { icon: Zap, title: "Payouts în 5 zile", desc: "Banii tăi în cont în 5 zile." },
                                 { icon: ShieldCheck, title: "Fără Reguli Ascunse", desc: "Reguli clare, fără surprize la payout." },
                                 { icon: Clock, title: "1-Step Fără Limită de Timp", desc: "Evoluezi în ritmul tău, fără presiune." },
                             ].map((item, i) => (
@@ -166,7 +166,7 @@ export default function QuizLandingPage() {
                         <div className="space-y-4">
                             {[
                                 { q: "Ce este un 1-Phase Challenge?", a: "Este cel mai rapid mod de a fi finanțat. În loc de 2 faze complexe, la 1-Phase Challenge ai un singur profit target de 10% de atins, fără nicio limită de timp." },
-                                { q: "Când primesc primul Payout?", a: "Poți face prima retragere de îndată ce ai generat profit eligibil conform termenilor, iar plățile noastre se procesează în medie în sub 24 de ore." },
+                                { q: "Când primesc primul Payout?", a: "Poți face prima retragere de îndată ce ai generat profit eligibil conform termenilor, iar plățile noastre se procesează în medie în 5 zile." },
                                 { q: "Pot folosi Expert Advisors (EA) / Boți?", a: "Da, încurajăm orice stil de trading legal atâta timp cât se încadrează în regulile generale de drawdown." }
                             ].map((faq, i) => (
                                 <motion.div key={i} {...fadeInUp} transition={{ delay: i * 0.1 }} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">

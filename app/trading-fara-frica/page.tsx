@@ -392,7 +392,7 @@ export default function TradingFaraFricaPage() {
                             </div>
                             <div className="w-px h-10 bg-gray-200" />
                             <div className="flex flex-col items-center">
-                                <span className="text-2xl font-black text-[#0F172A]">Instant</span>
+                                <span className="text-2xl font-black text-[#0F172A]">5 zile</span>
                                 <span className="text-sm text-gray-500 font-medium">Payouts</span>
                             </div>
                         </div>

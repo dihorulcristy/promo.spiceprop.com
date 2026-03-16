@@ -184,7 +184,7 @@ export default function ComparePage() {
                                             <td className="p-6 bg-[#FFF7ED]/10">
                                                 <div className="flex items-center gap-2 font-bold text-[#0F172A]">
                                                     <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                                                    <span>Within 24 Hours</span>
+                                                    <span>Within 5 Days</span>
                                                 </div>
                                             </td>
                                             <td className="p-6 text-gray-500">
@@ -325,10 +325,10 @@ export default function ComparePage() {
 
                         <div className="space-y-4">
                             {[
-                                { q: "Is SpiceProp as reliable as FTMO?", a: "Yes. SpiceProp partners with regulated liquidity providers and has processed millions in payouts. We focus on transparency and speed, ensuring you get your funds usually within 24 hours." },
+                                { q: "Is SpiceProp as reliable as FTMO?", a: "Yes. SpiceProp partners with regulated liquidity providers and has processed millions in payouts. We focus on transparency and speed, ensuring you get your funds usually within 5 days." },
                                 { q: "Can I use the same trading strategy I used at FTMO?", a: "Most likely, yes. Our rules are designed to be flexible. We support news trading, overnight holding, and weekend holding on swing accounts. There are no complex consistency rules to worry about." },
                                 { q: "What if I fail my SpiceProp challenge?", a: "This is where we shine. If you wait for our monthly reset promotion, you can get a free retry included with your challenge purchase. It's a safety net you won't find at most other firms." },
-                                { q: "How fast are payouts at SpiceProp?", a: "We pride ourselves on speed. While many firms profit from delaying payouts, we process them bi-weekly, and often approve them within 24 hours of the request." }
+                                { q: "How fast are payouts at SpiceProp?", a: "We pride ourselves on speed. While many firms profit from delaying payouts, we process them bi-weekly, and often approve them within 5 days of the request." }
                             ].map((item, i) => (
                                 <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                                     <h3 className="text-lg font-bold text-[#0F172A] mb-2 flex items-start gap-3">

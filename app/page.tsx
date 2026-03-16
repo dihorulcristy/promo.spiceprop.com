@@ -160,7 +160,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 { icon: BarChart3, title: "Regulated Data Feeds", desc: "Tier-1 liquidity providers", color: "text-spice-red" },
-                { icon: Zap, title: "Fast Payouts", desc: "Processed within 24 hours", color: "text-spice-gold" },
+                { icon: Zap, title: "Fast Payouts", desc: "Processed within 5 days", color: "text-spice-gold" },
                 { icon: ShieldCheck, title: "24/7 Support", desc: "Always here to help", color: "text-green-600" },
               ].map((item, i) => (
                 <motion.div
@@ -335,9 +335,9 @@ export default function Home() {
                 <div className="grid grid-cols-2 gap-4 mb-10">
                   {[
                     { value: "$2.5M+", label: "Paid to Traders" },
-                    { value: "4.8/5", label: "TrustPilot Score" },
+                    { value: "4/5", label: "TrustPilot Score" },
                     { value: "10,000+", label: "Active Traders" },
-                    { value: "24h", label: "Avg. Payout Time" },
+                    { value: "5 days", label: "Avg. Payout Time" },
                   ].map((stat, i) => (
                     <div key={i} className="p-5 backdrop-blur-sm rounded-2xl border border-white/10" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
                       <div className="text-2xl md:text-3xl font-bold mb-1" style={{ color: '#F59E0B' }}>{stat.value}</div>
